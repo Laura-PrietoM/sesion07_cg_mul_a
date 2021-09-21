@@ -8,7 +8,7 @@
   <button onclick="rotarTrazar(1)">Girar Rectangulo 1</button>
   <button onclick="rotarTrazar(2)">Girar Rectangulo 2</button>
 </div>
-<canvas id='canvas'/>
+<canvas id='canvas' height=400/>
 <script type="text/javascript">
 var ctx = document.getElementById('canvas').getContext('2d');
 function deg2rad(g) {
@@ -16,39 +16,38 @@ function deg2rad(g) {
 }
 function rotarTrazar(n) {
   if (n == 1) {
-  
-  // first white rect
+  ctx.save();
+  // white rect
   ctx.fillStyle = '#FFFFFF';
   ctx.fillRect(30, 30, 100, 100);
-
-  ctx.fillStyle = '#4D4E53';
-  ctx.fillRect(30, 30, 100, 100); 
-  ctx.rotate(deg2rad(-45)); // rotate
-   
-} else{
-
-  // first white rect
+  //blue rect
+  ctx.translate(80, 80); 
+  ctx.rotate(deg2rad(45)); 
+  ctx.translate(-80, -80); 
+  ctx.fillStyle = '#0095DD';
+  ctx.fillRect(30, 30, 100, 100);
+  ctx.restore();	
+  }
+  if(n==2) { 
+  ctx.save();
+  // white rect
   ctx.fillStyle = '#FFFFFF';
   ctx.fillRect(150, 30, 100, 100);
-
-
-  ctx.fillStyle = '#4D4E53';
+  ctx.translate(200, 80); 
+  ctx.rotate(deg2rad(-60)); 
+  ctx.translate(-200, -80);
+  //rojo c
+  ctx.fillStyle = '#0095DD';
   ctx.fillRect(150, 30, 100, 100);
-  ctx.rotate(deg2rad(60)); // rotate
-
-  
- }
+  ctx.restore();
+            }
 }
 function draw() {
-  ctx.save();
   // first blue rect
   ctx.fillStyle = '#0095DD';
   ctx.fillRect(30, 30, 100, 100);
-
-  // second blue rect
+   // second blue rect
+  ctx.fillStyle = '#0095DD';
   ctx.fillRect(150, 30, 100, 100);
-
 }
-
-
 </script>
